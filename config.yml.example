@@ -1,0 +1,9 @@
+coinmarketcap:
+  baseUrl: 'https://pro-api.coinmarketcap.com/v1'
+  token: <TOKEN>
+influxdb:
+  address: '<ADDRESS>'
+  port: '8086'
+  username: '<USERNAME>'
+  password: '<PASSWORD>'
+
