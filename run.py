@@ -1,3 +1,4 @@
+import os
 from sys import exit
 from requests import Request, Session
 from requests.exceptions import ConnectionError, Timeout, TooManyRedirects
@@ -11,7 +12,7 @@ from influxdb import InfluxDBClient
 import datetime
 
 try:
-    f = open("config.yml", "r")
+    f = open(os.path.dirname(os.path.realpath(__file__) + "/" + "config.yml", "r")
 except IOError:
     print("Error while opening file, please check if config.yml exists.")
     exit(1)
@@ -37,7 +38,7 @@ def getMarketData():
     url = baseUrl + '/cryptocurrency/listings/latest'
     parameters = {
         'start':'1',
-        'limit':'5000',
+        'limit':'200',
         'convert':'USD'
     }
     try:
@@ -54,7 +55,7 @@ def getMarketData():
         symbol = data[i]["symbol"]
         quote = data[i]["quote"]
         USDprice = quote["USD"]["price"]
-        dataDict["fields"][symbol] = USDprice
+        dataDict["fields"][symbol] = float(USDprice)
     dataDict["time"] = datetime.datetime.now().strftime('%Y-%m-%dT%H:%M:%SZ')
     return dataDict
 
