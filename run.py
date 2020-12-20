@@ -12,7 +12,7 @@ from influxdb import InfluxDBClient
 import datetime
 
 try:
-    f = open(os.path.dirname(os.path.realpath(__file__) + "/" + "config.yml", "r")
+    f = open(os.path.dirname(os.path.realpath(__file__)) + "/" + "config.yml", "r")
 except IOError:
     print("Error while opening file, please check if config.yml exists.")
     exit(1)
